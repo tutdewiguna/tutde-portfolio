@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../img/logo/logo-website.svg">
+    <title>TutDe - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../img/logo/logo-website.svg" alt="Logo">
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#" data-target="dashboard"><i class="fas fa-home"></i></a></li>
+                    <li><a href="#" data-target="invoice"><i class="fas fa-file-invoice"></i></a></li>
+                    <li><a href="#" data-target="calendar"><i class="fas fa-calendar-alt"></i></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="dashboard" class="content-section">
+                 <header class="main-header">
+                    <div class="header-title">
+                        <h1>Website Statistics</h1>
+                        <p>Overview of your website performance</p>
+                    </div>
+                    <div class="header-actions">
+                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </header>
+                <div class="summary-cards">
+                    <div class="card"><i class="fas fa-eye card-icon"></i><span class="card-value">1,450</span><span class="card-label">Visitors Today</span></div>
+                    <div class="card"><i class="fas fa-users card-icon"></i><span class="card-value">320</span><span class="card-label">New Users</span></div>
+                    <div class="card"><i class="fas fa-file-invoice-dollar card-icon"></i><span class="card-value">$2,560</span><span class="card-label">Total Sales</span></div>
+                    <div class="card"><i class="fas fa-chart-line card-icon"></i><span class="card-value">+15%</span><span class="card-label">Growth</span></div>
+                </div>
+            </section>
+            
+            <section id="invoice" class="content-section hidden">
+                <header class="main-header">
+                    <div class="header-title">
+                        <h1>Invoice Generator</h1>
+                        <p>Buat, edit, dan unduh invoice dalam format PDF</p>
+                    </div>
+                    <div class="header-actions">
+                         <button id="download-pdf-btn" class="btn btn-primary"><i class="fas fa-download"></i> Download PDF</button>
+                    </div>
+                </header>
+            
+                <div id="invoice-to-print" class="invoice-container">
+                    <header class="invoice-header">
+                        <div class="company-logo">
+                            <img src="../img/logo/logo-website.svg" alt="Company Logo">
+                            <div class="company-name">
+                                <input type="text" placeholder="TUTDE" class="editable-header">
+                                <input type="text" placeholder="PHOTOGRAPHY" class="editable-subheader">
+                            </div>
+                        </div>
+                        <h1 class="invoice-title">INVOICE</h1>
+                    </header>
+            
+                    <section class="invoice-meta-details">
+                        <div class="client-details">
+                            <h3 class="meta-title">Invoice to:</h3>
+                            <input type="text" id="client-name-input" placeholder="Nama Klien" class="editable client-name">
+                            <input type="email" placeholder="Email Klien" class="editable">
+                            <input type="tel" placeholder="Nomor Telepon" class="editable">
+                            <textarea placeholder="Alamat Klien" class="editable"></textarea>
+                        </div>
+                        <div class="invoice-data">
+                            <div class="data-item">
+                                <span class="data-label"><i class="fas fa-hashtag"></i> Invoice#</span>
+                                <input type="text" id="invoice-number" class="editable data-value" readonly>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label"><i class="far fa-calendar-check"></i> Invoice Date</span>
+                                <input type="date" id="invoice-date" class="editable data-value">
+                            </div>
+                        </div>
+                    </section>
+            
+                    <section class="invoice-items">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="item-col">Item</th>
+                                    <th class="quantity-col">Quantity</th>
+                                    <th class="price-col">Unit Price</th>
+                                    <th class="total-col">Total</th>
+                                    <th class="action-header"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="invoice-item-body">
+                            </tbody>
+                        </table>
+                        <button id="add-item-btn" class="btn-add-item"><i class="fas fa-plus-circle"></i> Add Item</button>
+                    </section>
+            
+                    <section class="invoice-summary-section">
+                        <div class="payment-method">
+                            <h3 class="meta-title">Payment Method</h3>
+                            <p><i class="fas fa-university"></i> <strong>Bank Jago</strong></p>
+                            <p>Account Name: TUTDE SATRIA WIGUNA</p>
+                            <p>Account No: 104889186632</p>
+                        </div>
+                        <div class="invoice-totals">
+                            <div class="total-row">
+                                <span class="total-label">Subtotal</span>
+                                <span id="subtotal" class="total-value">Rp 0</span>
+                            </div>
+                            <div class="total-row tax-row">
+                                <span class="total-label">Tax (%)</span>
+                                <input type="number" id="tax-rate" placeholder="11" class="editable tax-input">
+                                <span id="tax-amount" class="total-value">Rp 0</span>
+                            </div>
+                            <div class="total-row grand-total">
+                                <span class="total-label">Total</span>
+                                <span id="grand-total" class="total-value">Rp 0</span>
+                            </div>
+                            <div class="total-row status-row">
+                                <span class="total-label">Status</span>
+                                <select id="payment-status-selector">
+                                    <option value="unpaid">Not Yet Paid</option>
+                                    <option value="dp">DP</option>
+                                    <option value="paid">Paid</option>
+                                </select>
+                            </div>
+                            <div id="dp-section">
+                                <div class="total-row">
+                                    <span class="total-label">Already Paid</span>
+                                    <div class="price-input-group">
+                                        <span class="currency-symbol">Rp</span>
+                                        <input type="number" id="already-paid-input" placeholder="0" class="editable">
+                                    </div>
+                                </div>
+                                <div class="total-row amount-due">
+                                    <span class="total-label">Amount Due</span>
+                                    <span id="amount-due" class="total-value">Rp 0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <footer class="invoice-signatures">
+                        <div class="signature-box">
+                            <p>Penyewa Jasa</p>
+                            <div class="signature-line"></div>
+                            <input id="client-signature-name" type="text" class="editable signature-name" placeholder="( Nama Klien )">
+                        </div>
+                        <div class="signature-box">
+                            <p>Pemberi Jasa</p>
+                            <div class="signature-line"></div>
+                            <strong class="signature-provider-name">Tut De Satria Wiguna</strong>
+                        </div>
+                    </footer>
+
+                    <div class="invoice-contact-footer">
+                        <a href="https://instagram.com/tutdewigunaaa" target="_blank" class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <span>@tutdewigunaaa</span>
+                        </a>
+                        <a href="https://tutdewiguna.com" target="_blank" class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <span>tutdewiguna.com</span>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="calendar" class="content-section hidden">
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
