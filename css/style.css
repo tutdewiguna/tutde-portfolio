@@ -2052,29 +2052,6 @@ body.modal-open {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
-@media (max-width: 768px) {
-    .graphic-design-page .pdf-modal-content {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-    }
-    .graphic-design-page .pdf-modal-close {
-        top: 15px;
-        right: 20px;
-        background-color: rgba(255,255,255,0.7);
-        border-radius: 50%;
-        width: 35px;
-        height: 35px;
-        font-size: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        line-height: 1;
-        color: #333;
-    }
-}
-
 .graphic-design-page .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -2407,6 +2384,91 @@ body.modal-open {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
+.photo-video-editor-page .filters {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.photo-video-editor-page .filter-btn {
+    background-color: var(--secondary-color);
+    border: 1px solid #dee2e6;
+    padding: 10px 25px;
+    margin: 0 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+}
+.photo-video-editor-page .filter-btn:hover {
+    background-color: #e2e6ea;
+    border-color: #adb5bd;
+}
+.photo-video-editor-page .filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(24, 100, 171, 0.3);
+}
+.photo-video-editor-page #landscape-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 25px;
+}
+.photo-video-editor-page #portrait-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+}
+.photo-video-editor-page .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.photo-video-editor-page .gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+.photo-video-editor-page .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+.photo-video-editor-page .gallery-item:hover img {
+    transform: scale(1.1);
+}
+.photo-video-editor-page .gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    color: var(--white-color);
+    padding: 40px 20px 20px;
+    text-align: left;
+}
+.photo-video-editor-page .gallery-item .overlay h3 {
+    margin: 0 0 5px;
+    font-weight: 600;
+}
+.photo-video-editor-page .gallery-item .overlay p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+.photo-video-editor-page .gallery-item.landscape {
+    aspect-ratio: 16 / 9;
+}
+
+.photo-video-editor-page .gallery-item.portrait {
+    aspect-ratio: 9 / 16;
+}
+
 .creative-concept-page .logo {
     font-size: 1.8rem;
     font-weight: 700;
@@ -2444,7 +2506,7 @@ body.modal-open {
 }
 .creative-concept-page .hero {
     height: 60vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://placehold.co/1920x1080/1864ab/ffffff?text=creative-concept') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/creative-concept-page/header-creative-concept.jpg') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2602,7 +2664,7 @@ body.modal-open {
 }
 .digital-marketing-page .hero {
     height: 60vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://placehold.co/1920x1080/1864ab/ffffff?text=digital-marketing') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/digital-marketing-page/header-digital-marketing.jpg') no-repeat center center/cover;
     background-position: center;
     background-size: cover;
     display: flex;
@@ -2975,6 +3037,32 @@ body.modal-open {
         flex-direction: column;
         gap: 15px;
     }
+    .back-link {
+    position: relative;
+    }
+    .back-link i {
+        margin-right: 6px;
+    }
+    .back-link {
+        color: inherit;
+        text-decoration: none;
+    }
+    .back-link::after {
+        content: 'Back';
+        font-size: 1rem;
+    }
+    .back-link {
+        font-size: 0;
+    }
+    .back-link i {
+        font-size: 1rem;
+        margin-right: 4px;
+    }
+    .back-link::after {
+        font-size: 1rem;
+        margin-left: 4px;
+        font-weight: 500;
+    }
     .photography-page .hero h1,
     .videography-page .hero h1,
     .graphic-design-page .hero h1,
@@ -3036,9 +3124,6 @@ body.modal-open {
     }
     .photo-video-editor-page .comparison-gallery-grid {
         grid-template-columns: 1fr;
-    }
-    .creative-concept-page .timeline-item {
-        padding-left: 40px;
     }
     .soft-skills li::before {
         display: none;
@@ -3158,18 +3243,35 @@ body.modal-open {
     .graphic-design-page .lightbox-counter {
         bottom: 10px;
     }
-    .graphic-design-page .lightbox-hint {
+    .graphic-design-page .lightbox-hint.is-gallery {
         display: block;
         bottom: 70px;
     }
-    .digital-marketing-page .section-title,
-    .creative-concept-page .section-title {
+    .graphic-design-page .pdf-modal-content {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    .graphic-design-page .pdf-modal-close {
+        top: 15px;
+        right: 20px;
+        background-color: rgba(255,255,255,0.7);
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+        color: #333;
+    }
+    .digital-marketing-page .section-title {
         font-size: 1.8rem;
         margin-bottom: 15px;
     }
 
-    .digital-marketing-page .section-subtitle,
-    .creative-concept-page .section-subtitle {
+    .digital-marketing-page .section-subtitle {
         font-size: 1rem;
         padding: 0 15px;
         margin-bottom: 30px;
@@ -3201,34 +3303,72 @@ body.modal-open {
         margin-bottom: 15px;
     }
 
+    .creative-concept-page .section-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    .creative-concept-page .section-subtitle {
+        font-size: 1rem;
+        padding: 0 15px;
+        margin-bottom: 30px;
+    }
     .creative-concept-page .case-study-timeline {
         padding: 40px 0;
     }
-
-    .creative-concept-page .timeline-item {
-        flex-direction: column;
-        gap: 15px;
-        padding: 0 10px;
+    .creative-concept-page .timeline::after {
+        left: 25px;
     }
-
-    .creative-concept-page .timeline-icon {
-        font-size: 1.8rem;
-        min-width: 40px;
+    .creative-concept-page .timeline-item {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 15px;
+    }
+    .creative-concept-page .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    .creative-concept-page .timeline-dot {
+        left: 17px;
+    }
+    .creative-concept-page .timeline-item:nth-child(odd) .timeline-dot {
+        right: auto;
+        left: 17px;
+    }
+    .creative-concept-page .timeline-item:nth-child(odd) .timeline-content,
+    .creative-concept-page .timeline-item:nth-child(even) .timeline-content {
         text-align: left;
     }
-
-    .creative-concept-page .timeline-content {
-        padding: 15px;
+    .creative-concept-page .timeline-icon {
+        left: -18px;
     }
-
     .creative-concept-page .timeline-content h3 {
         font-size: 1.3rem;
         margin-bottom: 10px;
     }
-
     .creative-concept-page .timeline-content p {
         font-size: 0.95rem;
         line-height: 1.6;
+    }
+    .photo-video-editor-page #landscape-gallery {
+       grid-template-columns: 1fr !important;
+    }
+    .photo-video-editor-page #portrait-gallery {
+        display: flex;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        gap: 15px;
+        scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .photo-video-editor-page #portrait-gallery::-webkit-scrollbar {
+        display: none;
+    }
+    .photo-video-editor-page #portrait-gallery .gallery-item.portrait {
+        flex: 0 0 75%;
+        scroll-snap-align: center;
+    }
+    .photo-video-editor-page .gallery-item:hover {
+        display: none;
     }
 }
 @media (max-width: 576px) {

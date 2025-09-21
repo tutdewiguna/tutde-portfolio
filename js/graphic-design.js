@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxNext = document.getElementById('lightbox-next');
     const lightboxCounter = document.getElementById('lightbox-counter');
     const lightboxWrapper = lightbox.querySelector('.lightbox-content-wrapper');
+    const lightboxHint = document.querySelector('.lightbox-hint');
     
     const pdfModal = document.getElementById('pdf-modal');
     const pdfViewer = document.getElementById('pdf-viewer');
@@ -47,11 +48,17 @@ document.addEventListener('DOMContentLoaded', function() {
             lightboxContent.src = currentImages[currentIndex];
             lightboxContent.style.opacity = '1';
         }, 300);
-        lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        
         const isGallery = currentImages.length > 1;
+        
+        lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
         lightboxPrev.style.display = isGallery ? 'flex' : 'none';
         lightboxNext.style.display = isGallery ? 'flex' : 'none';
         lightboxCounter.style.display = isGallery ? 'block' : 'none';
+        
+        if (lightboxHint) {
+            lightboxHint.classList.toggle('is-gallery', isGallery);
+        }
     }
 
     galleryItems.forEach(item => {
@@ -61,18 +68,24 @@ document.addEventListener('DOMContentLoaded', function() {
             if (imagesAttr) {
                 const allFiles = imagesAttr.split(',').map(s => s.trim());
                 const firstFile = allFiles[0].toLowerCase();
+                
                 if (firstFile.endsWith('.pdf') || firstFile.includes('drive.google.com/file/')) {
                     const pdfUrl = allFiles[0];
+                    
                     pdfModal.classList.add('loading');
                     pdfModal.classList.add('visible');
                     document.body.style.overflow = 'hidden';
+                    
                     pdfViewer.onload = function() {
                         pdfModal.classList.remove('loading');
                     };
-                    pdfViewer.src = pdfUrl;
+                    
+                    pdfViewer.src = `${pdfUrl}#toolbar=0`;
                     return;
                 }
+
                 currentImages = allFiles.filter(file => !file.toLowerCase().endsWith('.pdf') && !file.toLowerCase().includes('drive.google.com/file/'));
+
                 if (currentImages.length > 0) {
                     lightbox.style.display = 'flex';
                     document.body.style.overflow = 'hidden';
@@ -130,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
         galleryItems.forEach(item => {
             const imagesAttr = item.getAttribute('data-images');
             if (!imagesAttr) return;
-            const imagesForAnimation = imagesAttr.split(',').map(s => s.trim()).filter(file => !file.toLowerCase().endsWith('.pdf'));
+            const imagesForAnimation = imagesAttr.split(',').map(s => s.trim()).filter(file => !file.toLowerCase().endsWith('.pdf') && !file.toLowerCase().includes('drive.google.com/file/'));
             if (imagesForAnimation.length > 1) {
                 const coverImage = item.querySelector('img');
                 let currentIndex = imagesForAnimation.findIndex(url => coverImage.src.endsWith(url));

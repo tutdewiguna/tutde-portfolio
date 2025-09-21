@@ -28,7 +28,7 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1 class="animate-on-scroll fade-in-up">Photo & Video Editor</h1>
+                <h1 class="animate-on-scroll fade-in-up">Photo & Video Editing</h1>
             </div>
         </section>
         <section class="experience-intro">
@@ -72,30 +72,59 @@
                 </div>
             </div>
         </section>
-        <section class="gallery-section video-gallery">
+        <section class="gallery-section">
             <div class="container">
                 <h2 class="section-title animate-on-scroll fade-in-up">Video Editing Portfolio</h2>
-                <p class="section-subtitle animate-on-scroll fade-in-up" style="--animation-delay: 0.2s;">
-                    Some of the video projects I have edited and produced.
-                </p>
-                <div class="gallery-grid">
-                    <div class="gallery-item animate-on-scroll zoom-in-effect" data-video-src="https://www.youtube.com/embed/dQw4w9WgXcQ" style="--animation-delay: 0.1s;">
-                        <img src="https://placehold.co/800x450/339af0/ffffff?text=Video+Project+1" alt="Proyek Video 1">
-                        <div class="overlay">
-                            <h3>Company Profile</h3>
+                <p class="section-subtitle animate-on-scroll fade-in-up" style="--animation-delay: 0.1s;">Some of the video projects I have edited and produced.</p>
+
+                <div class="filters animate-on-scroll fade-in-up" style="--animation-delay: 0.2s;">
+                    <button class="filter-btn active" data-filter="landscape">Landscape</button>
+                    <button class="filter-btn" data-filter="portrait">Portrait</button>
+                </div>
+
+                <div class="video-gallery-wrapper">
+                    <div id="landscape-gallery" class="video-gallery">
+                        <div class="gallery-item landscape animate-on-scroll zoom-in-effect" data-video-src="https://www.youtube.com/embed/z4Z3QYf-LqQ" style="--animation-delay: 0.1s;">
+                            <img src="https://placehold.co/800x450/dbe4ff/333333?text=Company+Profile" alt="Company Profile Video">
+                            <div class="overlay">
+                                <h3>Company Profile</h3>
+                                <p>Professional corporate video</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="gallery-item animate-on-scroll zoom-in-effect" data-video-src="https://www.youtube.com/embed/videoseries?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG" style="--animation-delay: 0.2s;">
-                        <img src="https://placehold.co/800x450/74c0fc/ffffff?text=Video+Project+2" alt="Proyek Video 2">
-                        <div class="overlay">
-                            <h3>Instagram Reels</h3>
+                        <div class="gallery-item landscape animate-on-scroll zoom-in-effect" data-video-src="https://www.youtube.com/embed/dQw4w9WgXcQ" style="--animation-delay: 0.2s;">
+                            <img src="https://placehold.co/800x450/a5d8ff/333333?text=Promotional+Video" alt="Promotional Video">
+                            <div class="overlay">
+                                <h3>Promotional Video</h3>
+                                <p>Engaging marketing content</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="gallery-item animate-on-scroll zoom-in-effect" data-video-src="https://www.youtube.com/embed/3tmd-ClpJxA" style="--animation-delay: 0.3s;">
-                        <img src="https://placehold.co/800x450/a5d8ff/333333?text=Video+Project+3" alt="Proyek Video 3">
-                        <div class="overlay">
-                            <h3>Promotional Video</h3>
                         </div>
+
+                    <div id="portrait-gallery" class="video-gallery" style="display: none;">
+                        <div class="gallery-item portrait animate-on-scroll zoom-in-effect" data-video-src="https://www.youtube.com/embed/3tmd-ClpJxA" style="--animation-delay: 0.1s;">
+                            <img src="https://placehold.co/450x800/ffdeeb/333333?text=Instagram+Reels" alt="Instagram Reels">
+                            <div class="overlay">
+                                <h3>Instagram Reels 1</h3>
+                                <p>Short-form vertical video</p>
+                            </div>
+                            
+                        </div>
+                        <div class="gallery-item portrait animate-on-scroll zoom-in-effect" data-video-src="https://www.youtube.com/embed/3tmd-ClpJxA" style="--animation-delay: 0.2s;">
+                            <img src="https://placehold.co/450x800/e9d5ff/333333?text=Instagram+Reels" alt="Instagram Reels">
+                            <div class="overlay">
+                                <h3>Instagram Reels 2</h3>
+                                <p>Short-form vertical video</p>
+                            </div>
+
+                        </div>
+                        <div class="gallery-item portrait animate-on-scroll zoom-in-effect" data-video-src="https://www.youtube.com/embed/3tmd-ClpJxA" style="--animation-delay: 0.3s;">
+                            <img src="https://placehold.co/450x800/d0bfff/333333?text=Instagram+Reels" alt="Instagram Reels">
+                            <div class="overlay">
+                                <h3>Instagram Reels 3</h3>
+                                <p>Short-form vertical video</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
