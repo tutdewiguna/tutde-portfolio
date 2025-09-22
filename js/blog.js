@@ -40,3 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
     setCurrentYear();
     setShareLinks();
 });
+
+    document.querySelector('.copy-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+        const status = document.querySelector('.copy-status');
+        status.style.display = 'inline';
+        status.textContent = 'Link copied!';
+        setTimeout(() => {
+        status.style.display = 'none';
+        }, 2000);
+    });
+});

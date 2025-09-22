@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const landscapeGallery = document.getElementById('landscape-gallery');
         const portraitGallery = document.getElementById('portrait-gallery');
 
+        // Atur kondisi awal saat halaman dimuat
+        landscapeGallery.classList.add('active');
+        portraitGallery.classList.remove('active');
+
         if (filterButtons.length && landscapeGallery && portraitGallery) {
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -13,12 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     const filter = button.getAttribute('data-filter');
 
                     if (filter === 'landscape') {
-                        landscapeGallery.style.display = 'grid';
-                        portraitGallery.style.display = 'none';
+                        landscapeGallery.classList.add('active');
+                        portraitGallery.classList.remove('active');
                     } else {
-                        portraitGallery.style.display = 'flex'; 
-                        landscapeGallery.style.display = 'none';
-                        portraitGallery.scrollLeft = 0; // Reset scroll
+                        portraitGallery.classList.add('active');
+                        landscapeGallery.classList.remove('active');
                     }
                 });
             });
@@ -113,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function openLightboxVideo(src, container, lightbox) {
-        container.innerHTML = `<div class="lightbox-video-wrapper"><iframe src="${src}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+        container.innerHTML = `<video class="lightbox-video" src="${src}" controls autoplay loop playsinline></video>`;
         lightbox.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }

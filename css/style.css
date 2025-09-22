@@ -529,16 +529,22 @@ body.modal-open {
     border-radius: 10px;
     overflow: hidden;
 }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 30px;
+  justify-content: center; /* center kalau card kurang dari 3 */
+}
 .blog-grid.active {
     cursor: grabbing;
 }
 .blog-card {
-    background-color: var(--white-color);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--secondary-color);
+  background-color: var(--white-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--secondary-color);
 }
 .blog-card:hover {
     transform: translateY(-10px);
@@ -566,6 +572,53 @@ body.modal-open {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 20px;
+}
+.blog-page table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.blog-page th, td {
+    padding: 1rem 0.5rem;
+    vertical-align: top;
+}
+
+.blog-page thead th {
+    color: #a0a0a0;
+    font-weight: normal;
+    border-bottom: 1px solid #444;
+    padding-bottom: 1rem;
+}
+
+.blog-page tbody tr {
+    border-bottom: 1px solid #333;
+}
+
+.blog-page tbody tr:last-child {
+    border-bottom: none;
+}
+
+.blog-page td:first-child {
+    font-weight: bold;
+    width: 20%;
+}
+
+.blog-page td:nth-child(2) {
+    width: 30%;
+}
+
+.blog-page td:nth-child(3) {
+    width: 50%;
+}
+
+.blog-page .source-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    border-radius: 12px;
+    text-decoration: none;
 }
 .lightbox {
     display: none;
@@ -796,10 +849,25 @@ body.modal-open {
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
+.blog-page .article-image figcaption.img-source {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #777;
+  text-align: center;
+  margin-top: 0.5em;
+}
+.blog-page .article-image figcaption.img-source a {
+  color: inherit;
+  text-decoration: none;
+}
+.blog-page .article-image figcaption.img-source a:hover {
+  text-decoration: underline;
+}
 .blog-page .article-body p {
     margin-bottom: 20px;
     line-height: 1.8;
     color: #444;
+    text-align: justify;
 }
 .blog-page .article-body h2 {
     font-size: 1.8rem;
@@ -813,6 +881,40 @@ body.modal-open {
     font-style: italic;
     color: #666;
     font-size: 1.1rem;
+}
+.blog-page .article-body ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: 2em;
+  text-align: justify;
+}
+.blog-page .article-body ul li {
+  margin-bottom: 0.8em;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #333;
+  padding-left: 0.4em;
+}
+.blog-page .article-body ul li strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+.blog-page .article-body ol {
+  list-style-position: outside;
+  padding-left: 2.5em;
+  margin-left: 0;
+  text-align: justify;
+}
+.blog-page .article-body ol li {
+  margin-bottom: 0.8em;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #333;
+  padding-left: 0.6em;
+}
+.blog-page .article-body ol li strong {
+  font-weight: 600;
+  color: #1a1a1a;
 }
 .blog-page .article-footer {
     margin-top: 40px;
@@ -2251,13 +2353,6 @@ body.modal-open {
     transform: translateY(-10px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
-.photo-video-editor-page .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
 .photo-video-editor-page .gallery-item:hover img {
     transform: scale(1.1);
     filter: brightness(80%);
@@ -2350,6 +2445,14 @@ body.modal-open {
     max-width: 1100px;
     animation: zoomIn 0.5s;
 }
+.photo-video-editor-page .lightbox-container video {
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    border-radius: 8px;
+    display: block;
+    margin: auto;
+}
 .photo-video-editor-page .lightbox-video-wrapper {
     position: relative;
     padding-bottom: 56.25%;
@@ -2365,10 +2468,17 @@ body.modal-open {
 .photo-video-editor-page .lightbox-close {
     position: absolute;
     top: 25px;
-    right: 40px;
+    right: 30px;
     color: #fff;
     font-size: 40px;
+    font-weight: bold;
+    transition: all 0.3s ease;
     cursor: pointer;
+    z-index: 3001;
+}
+.photo-video-editor-page .lightbox-close:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
 }
 .photo-video-editor-page .animate-on-scroll {
     opacity: 0;
@@ -2410,16 +2520,24 @@ body.modal-open {
     border-color: var(--primary-color);
     box-shadow: 0 4px 15px rgba(24, 100, 171, 0.3);
 }
-.photo-video-editor-page #landscape-gallery {
-    display: grid;
+.photo-video-editor-page .video-gallery {
+    display: none;
+}
+
+.photo-video-editor-page .video-gallery.active {
+    display: grid; 
+}
+
+.photo-video-editor-page #landscape-gallery.active {
     grid-template-columns: repeat(2, 1fr); 
     gap: 25px;
 }
-.photo-video-editor-page #portrait-gallery {
-    display: grid;
+
+.photo-video-editor-page #portrait-gallery.active {
     grid-template-columns: repeat(3, 1fr); 
     gap: 25px;
 }
+
 .photo-video-editor-page .gallery-item {
     position: relative;
     overflow: hidden;
@@ -3348,10 +3466,11 @@ body.modal-open {
         font-size: 0.95rem;
         line-height: 1.6;
     }
-    .photo-video-editor-page #landscape-gallery {
+    .photo-video-editor-page #landscape-gallery.active {
        grid-template-columns: 1fr !important;
     }
-    .photo-video-editor-page #portrait-gallery {
+    
+    .photo-video-editor-page #portrait-gallery.active {
         display: flex;
         overflow-x: auto;
         flex-wrap: nowrap;
@@ -3360,15 +3479,17 @@ body.modal-open {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
-    .photo-video-editor-page #portrait-gallery::-webkit-scrollbar {
+
+    .photo-video-editor-page #portrait-gallery.active::-webkit-scrollbar {
         display: none;
     }
-    .photo-video-editor-page #portrait-gallery .gallery-item.portrait {
+
+    .photo-video-editor-page #portrait-gallery.active .gallery-item.portrait {
         flex: 0 0 75%;
         scroll-snap-align: center;
     }
     .photo-video-editor-page .gallery-item:hover {
-        display: none;
+    transform: none;
     }
 }
 @media (max-width: 576px) {
