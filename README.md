@@ -1,35 +1,29 @@
-# TutDe Portfolio 
-Portfolio web pribadi ini dibangun menggunakan Laravel + Vite, dan menampilkan karya-karya fotografi, videografi, desain grafis, serta blog.
+# TutDe Portfolio (Static Website)
+
+Ini adalah versi statis dari **Portfolio Website** saya, dibangun menggunakan **HTML, CSS, dan JavaScript** tanpa framework backend. Website ini berfungsi untuk menampilkan karya-karya saya di bidang **fotografi, videografi, desain grafis, editing, dan digital marketing**.
 
 ## 📦 Fitur
 
-- Halaman publik:
-  - Beranda (Home)
-  - Fotografi (Photography) — galeri foto, filter, lightbox detail
-  - Videografi (Videography) — galeri video
-  - Desain Grafis (Graphic Design)
-  - Blog / Posting Artikel
-- Dashboard admin:
-  - CRUD untuk item fotografi, filter, gambar galeri
-  - CRUD untuk artikel blog, sertifikat, pengalaman kerja, pendidikan, dsb.
-- Editor konten (CKEditor atau editor lain) untuk formatting h2, quote, tabel, dan lainnya (boleh integrasi nanti)
-- Upload dan manajemen gambar (cover + galeri) dengan storage publik
-- Responsif & animasi sederhana (scroll reveal, zoom, lightbox)
+- Halaman **Home** dengan hero, about, skills, dan call-to-action.
+- Halaman **Skills** (Photography, Videography, Graphic Design, Photo & Video Editing, Digital Marketing).
+- **Portfolio Grid** dengan filter (All, Portrait, Landscape, Product, dll).
+- **Lightbox** untuk menampilkan gambar detail saat diklik.
+- Animasi sederhana (fade-in, scroll, zoom).
+- Halaman **Blog** untuk menampilkan artikel statis.
+- Halaman **Contact** dengan form & link WhatsApp API.
 
-## 🧰 Teknologi & Tools
+## 🧰 Teknologi
 
-- Backend: PHP (Laravel)
-- Frontend: Blade, CSS / SCSS, JavaScript (module custom)
-- Bundler / Assets: Vite
-- Database: MySQL / SQLite (tergantung pengaturan lokal)
-- Penyimpanan file: `storage` → gunakan `php artisan storage:link` agar bisa diakses publik
-- Editor teks: CKEditor (opsional, kalau sudah di-integrasi nanti)
+- **HTML5** untuk struktur
+- **CSS3** (custom + responsive design)
+- **JavaScript** untuk interaktivitas (filter, lightbox, animasi)
+- **Font Awesome** untuk ikon
+- **Google Fonts** untuk tipografi
+- Semua aset (gambar, ikon, css, js) disimpan di folder `assets/`
 
-## 🚀 Setup & Instalasi
+## 🚀 Cara Menjalankan
 
-Berikut langkah-langkah untuk menjalankan proyek ini secara lokal:
-
-1. Clone repo:
+1. Clone repository:
    ```bash
    git clone https://github.com/tutdewiguna/tutde-portfolio.git
    cd tutde-portfolio
