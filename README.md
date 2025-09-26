@@ -1,5 +1,4 @@
-# TutDe Portfolio (Laravel)
-
+# TutDe Portfolio 
 Portfolio web pribadi ini dibangun menggunakan Laravel + Vite, dan menampilkan karya-karya fotografi, videografi, desain grafis, serta blog.
 
 ## 📦 Fitur
